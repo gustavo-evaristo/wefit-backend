@@ -12,7 +12,6 @@ describe("List customers test", () => {
   });
 
   it("should be able to list a customers", async () => {
-    const customerCreated = makeCustomer();
     inMemoryCustomerRepository.customers.push(
       makeCustomer(),
       makeCustomer(),
