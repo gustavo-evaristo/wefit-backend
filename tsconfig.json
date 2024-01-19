@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es2021",
     "module": "commonjs",
     "outDir": "./dist",
     "strict": true,
-    "strictPropertyInitialization": false,
-    "allowJs": true,
     "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
-    // "types": ["vitest/globals"]
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
-  "exclude": ["**/*.spec.ts", "vite.config.ts", "./dist", "./test"]
+  "exclude": ["**/*.spec.ts", "./dist", "./test"]
 }
