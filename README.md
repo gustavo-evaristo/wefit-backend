@@ -35,7 +35,15 @@ O projeto utiliza as seguintes tecnologias e bibliotecas:
 - Zod
 - Jest
 
-## Endpoint
+## Como testar
+
+### Testes com jest
+
+Para testar a api basta executar o comando `npm run test` ou `yarn test` e aguardar a execução dos testes automatizados.
+
+### Endpoints
+
+Na raiz do projeto existe um arquivo `insomnia.json` que pode ser importado para realizar os testes da api atravez do aplicativo insomnia.
 
 A aplicação possui os seguintes endpoints:
 
