@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 import "reflect-metadata";
+import { ZodError } from "zod";
 import { customerRoute } from "./infra/http/routes/customer.route";
 
 const app = express();
@@ -15,9 +16,11 @@ function errorHandling(
   res: Response,
   next: NextFunction
 ) {
-  return res.status(400).json({
-    errro: err.message,
-  });
+  if (err instanceof ZodError) {
+    return res.status(400).send(err.message);
+  }
+
+  return res.status(400).json({ error: err.message });
 }
 
 app.use(errorHandling);

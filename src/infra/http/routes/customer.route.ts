@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express";
+import { z } from "zod";
 import { CreateCustomerUseCase } from "../../../use-cases/customer/create/create-customer";
 import { DeleteCustomerUseCase } from "../../../use-cases/customer/delete/delete-customer";
 import { FindCustomerUseCase } from "../../../use-cases/customer/find/find-customer";
@@ -16,7 +17,26 @@ customerRoute.post("/", async (req: Request, res: Response) => {
     new PrismaCustomerRepository()
   );
 
-  const { customer } = await createCustomerUseCase.execute(req.body);
+  const createCustomerSchem = z.object({
+    name: z.string().min(1),
+    email: z.string().min(1),
+    phone: z.string().min(1),
+    cellPhone: z.string().min(1),
+    cpf: z.string().min(1),
+    cnpj: z.string().min(1),
+    type: z.string().min(1),
+    zipCode: z.string().min(1),
+    city: z.string().min(1),
+    state: z.string().min(1),
+    district: z.string().min(1),
+    street: z.string().min(1),
+    number: z.string().min(1),
+    complement: z.string().optional(),
+  });
+
+  const createCustomerDTO = createCustomerSchem.parse(req.body);
+
+  const { customer } = await createCustomerUseCase.execute(createCustomerDTO);
 
   res.json(HttpCreateCustomerAdapter.toJson(customer));
 });
