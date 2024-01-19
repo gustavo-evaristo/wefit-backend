@@ -25,7 +25,7 @@ customerRoute.post("/", async (req: Request, res: Response) => {
   res.json(HttpCreateCustomerAdapter.toJson(customer));
 });
 
-customerRoute.get("/:id/view", async (req: Request, res: Response) => {
+customerRoute.get("/:id", async (req: Request, res: Response) => {
   const findCustomerUseCase = new FindCustomerUseCase(
     new PrismaCustomerRepository()
   );
@@ -35,7 +35,7 @@ customerRoute.get("/:id/view", async (req: Request, res: Response) => {
   res.json(HttpFindCustomerAdapter.toJson(customer));
 });
 
-customerRoute.get("/list", async (req: Request, res: Response) => {
+customerRoute.get("/", async (req: Request, res: Response) => {
   const listCustomerUseCase = new ListCustomerUseCase(
     new PrismaCustomerRepository()
   );
