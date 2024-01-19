@@ -4,7 +4,7 @@ import { DeleteCustomerUseCase } from "../../../use-cases/customer/delete/delete
 import { FindCustomerUseCase } from "../../../use-cases/customer/find/find-customer";
 import { ListCustomerUseCase } from "../../../use-cases/customer/list/list-customers";
 import { UpdateCustomerUseCase } from "../../../use-cases/customer/update/update-customer";
-import { PrismaCustomerRepository } from "../../customer/repository/prisma/prisma.repository";
+import { PrismaCustomerRepository } from "../../database/customer/repository/prisma/prisma.repository";
 import { HttpCreateCustomerAdapter } from "../adapters/customer/http-create-customer.adapter";
 import { HttpFindCustomerAdapter } from "../adapters/customer/http-find-customer.adapter";
 import { HttpUpdateCustomerAdapter } from "../adapters/customer/http-update-customer.adapter";

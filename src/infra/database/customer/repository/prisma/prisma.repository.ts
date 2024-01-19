@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { Customer } from "../../../../domain/customer/entity/customer";
-import { CustomerRepository } from "../../../../domain/customer/repositories/customer.repository";
+import { Customer } from "../../../../../domain/customer/entity/customer";
+import { CustomerRepository } from "../../../../../domain/customer/repositories/customer.repository";
 import { PrismaCreateCustomerAdapter } from "../../adapters/prisma/prisma-create-customer.adapter";
 import { PrismaFindCustomerAdapter } from "../../adapters/prisma/prisma-find-customer.adapter";
 

@@ -1,4 +1,4 @@
-import { Customer } from "../../../../domain/customer/entity/customer";
+import { Customer } from "../../../../../domain/customer/entity/customer";
 
 export class PrismaCreateCustomerAdapter {
   static toPrisma({

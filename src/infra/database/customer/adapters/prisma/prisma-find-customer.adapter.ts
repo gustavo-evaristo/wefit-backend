@@ -1,9 +1,9 @@
 import { customers as PrismaCustomer } from "@prisma/client";
-import { Customer } from "../../../../domain/customer/entity/customer";
-import { Address } from "../../../../domain/customer/value-object/address";
-import { CNPJ } from "../../../../domain/customer/value-object/cnpj";
-import { CPF } from "../../../../domain/customer/value-object/cpf";
-import { CustomerType } from "../../../../domain/customer/value-object/customer-type";
+import { Customer } from "../../../../../domain/customer/entity/customer";
+import { Address } from "../../../../../domain/customer/value-object/address";
+import { CNPJ } from "../../../../../domain/customer/value-object/cnpj";
+import { CPF } from "../../../../../domain/customer/value-object/cpf";
+import { CustomerType } from "../../../../../domain/customer/value-object/customer-type";
 
 export class PrismaFindCustomerAdapter {
   static toDomain({
