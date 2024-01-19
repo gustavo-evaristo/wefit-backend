@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/src/index.js",
-    "dev": "ts-node-dev -T -I node_modules src/index.ts",
+    "prod": "node dist/src/index.js",
+    "start": "ts-node-dev -T -I node_modules src/index.ts",
     "build": "tsc",
     "test": "jest"
   },

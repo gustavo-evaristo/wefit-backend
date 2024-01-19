@@ -22,7 +22,7 @@ interface Input {
   district: string;
   street: string;
   number: string;
-  complement: string;
+  complement?: string;
 }
 
 interface Output {

@@ -1,5 +1,4 @@
 import { Request, Response, Router } from "express";
-import { z } from "zod";
 import { CreateCustomerUseCase } from "../../../use-cases/customer/create/create-customer";
 import { DeleteCustomerUseCase } from "../../../use-cases/customer/delete/delete-customer";
 import { FindCustomerUseCase } from "../../../use-cases/customer/find/find-customer";
@@ -9,6 +8,8 @@ import { PrismaCustomerRepository } from "../../customer/repository/prisma/prism
 import { HttpCreateCustomerAdapter } from "../adapters/customer/http-create-customer.adapter";
 import { HttpFindCustomerAdapter } from "../adapters/customer/http-find-customer.adapter";
 import { HttpUpdateCustomerAdapter } from "../adapters/customer/http-update-customer.adapter";
+import { CreateCustomerValidator } from "../validators/customer/create-customer.validate";
+import { UpdateCustomerValidator } from "../validators/customer/update-customer.validator";
 
 const customerRoute = Router();
 
@@ -17,24 +18,7 @@ customerRoute.post("/", async (req: Request, res: Response) => {
     new PrismaCustomerRepository()
   );
 
-  const createCustomerSchem = z.object({
-    name: z.string().min(1),
-    email: z.string().min(1),
-    phone: z.string().min(1),
-    cellPhone: z.string().min(1),
-    cpf: z.string().min(1),
-    cnpj: z.string().min(1),
-    type: z.string().min(1),
-    zipCode: z.string().min(1),
-    city: z.string().min(1),
-    state: z.string().min(1),
-    district: z.string().min(1),
-    street: z.string().min(1),
-    number: z.string().min(1),
-    complement: z.string().optional(),
-  });
-
-  const createCustomerDTO = createCustomerSchem.parse(req.body);
+  const createCustomerDTO = CreateCustomerValidator.validate(req.body);
 
   const { customer } = await createCustomerUseCase.execute(createCustomerDTO);
 
@@ -66,7 +50,9 @@ customerRoute.put("/", async (req: Request, res: Response) => {
     new PrismaCustomerRepository()
   );
 
-  const { customer } = await updateCustomerUseCase.execute(req.body);
+  const updatedCustomerDTO = UpdateCustomerValidator.validate(req.body);
+
+  const { customer } = await updateCustomerUseCase.execute(updatedCustomerDTO);
 
   res.json(HttpUpdateCustomerAdapter.toJson(customer));
 });
